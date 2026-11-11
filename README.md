@@ -35,3 +35,18 @@ Its exact bytes can depend on the minifier and LZMA implementation; the
 checks fail rather than silently produce a different entry.
 
 This package supplies the preferred source, upstream credit, build tools, and full GPL license for the packed 60k-node experiment.
+
+## 30k experiment
+
+The 60k competition submission timed out in the official 3,600-second trial.
+The 30k experiment changes its search threshold from 60,000 to 30,000 nodes;
+because it checks every 2,048 nodes, the stop occurs at 30,720 nodes. This is
+an attempted runtime fix, not proof of a winning score or a timing guarantee.
+The entry retains the Sunfish GPL-3.0-only provenance described above. The
+original adaptation predates its contest freshness anchor and may need review.
+
+`sunfish-30k.py` is the corresponding human-readable source. With Python 3 and
+`python-minifier==3.4.0` available, run `python pack_30k.py` to reproduce
+`sunfish-30k-entry.py`. The expected 4,085-byte UTF-8 launcher has SHA-256
+`7c8c40861c5334a3702186572642a987e1e4dab715733034abfb54def727a632`.
+The packer checks its compressed payload and fails on a different build.
