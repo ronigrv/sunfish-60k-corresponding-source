@@ -50,3 +50,24 @@ original adaptation predates its contest freshness anchor and may need review.
 `sunfish-30k-entry.py`. The expected 4,085-byte UTF-8 launcher has SHA-256
 `7c8c40861c5334a3702186572642a987e1e4dab715733034abfb54def727a632`.
 The packer checks its compressed payload and fails on a different build.
+
+## Independently adapted 24k experiment
+
+The [corresponding source package](independent-sunfish-24k-corresponding-source.zip)
+contains the readable engine, the pinned Sunfish upstream source, the full
+GPL-3.0-only license and attribution, and the build scripts and their licenses.
+Its ZIP SHA-256 is
+`0fae482bfc82d662ed3aecb3155b27526b58b634d90ebe1f7027b3431607ccf3`.
+
+To reproduce the executable, extract the ZIP and run
+`python -B build.py main.reproduced.py` from that directory with CPython 3.12.5. The
+included minifier needs no network or installation. The expected 4,018-byte
+file has SHA-256
+`9912732c57135f6629bdab047195dd375f646d8f0cd138e8594bd46839fd36e4`.
+
+The fixed search limit is 24,000 nodes. Four local games on selected practice
+openings produced one win and three losses; this small sample does not establish
+tournament strength. Official sandbox timing, a full-trial replay, and a
+statistically reliable advantage over the house baseline remain unverified.
+The executable and its corresponding source remain GPL-3.0-only; the separately
+vendored python-minifier is MIT-licensed.
