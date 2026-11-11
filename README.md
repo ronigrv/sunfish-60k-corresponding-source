@@ -71,3 +71,15 @@ tournament strength. Official sandbox timing, a full-trial replay, and a
 statistically reliable advantage over the house baseline remain unverified.
 The executable and its corresponding source remain GPL-3.0-only; the separately
 vendored python-minifier is MIT-licensed.
+
+
+## Independent experimental 40k-node derivative
+
+An independently authored, experimental 40,000-node derivative is supplied in [independent-sunfish-40k-corresponding-source.zip](independent-sunfish-40k-corresponding-source.zip). It derives from the independent 24k version above and the pinned Sunfish upstream specified inside the archive. The archive includes editable corresponding source, build tools, upstream attribution and applicable licenses.
+
+- Entry repository commit: `958bbb4bce8a677b475e43639e950776e9050415`.
+- Executable `main.py` SHA-256: `250d9e44f755fbbbdb1df7f85d50aee856354f43d448e059968685e5cbea3ff1` (4,016 bytes).
+- Source archive SHA-256: `af8920681f1d24a09ecbad923302af31c77110ddd37bcb85955b7079f1fb074c`.
+- Rebuild with `python -B build.py main.reproduced.py` inside the extracted archive; its README describes the prerequisites and verification.
+
+This experiment has no official grade yet. A larger search budget does not guarantee better play or completion within the contest time limit.
