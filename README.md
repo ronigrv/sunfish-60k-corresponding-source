@@ -1,6 +1,6 @@
 # Sunfish chess experiment: corresponding source
 
-This local package contains the source and build scripts for the packed 60k-node chess experiment in `outputs/sunfish-60k-main.py`. It is derived from Sunfish by Thomas Dybdahl Ahle and contributors, at commit `e396948acbd80cdcbad3dccfb07e878fba9df8f4`:
+This package contains the source and build scripts for the 60k-node chess experiment and its UTF-8-safe entry. It is derived from Sunfish by Thomas Dybdahl Ahle and contributors, at commit `e396948acbd80cdcbad3dccfb07e878fba9df8f4`:
 
 https://github.com/thomasahle/sunfish/tree/e396948acbd80cdcbad3dccfb07e878fba9df8f4
 
@@ -8,6 +8,30 @@ The derived work is licensed under GPL-3.0-only. The full license is in `LICENSE
 
 `work/sunfish-60k.py` is the exact readable source used to produce the packed experiment. `work/sunfish-experiment.py` is the earlier 50,000-threshold adaptation. `work/build-sunfish-fork.py` is the actual script used to create that earlier adaptation from `work/sunfish-upstream-repo/nnue_4k/pst_entry.py`. The 60,000-threshold source differs from that adaptation by its search-limit value; the generator produces the earlier file, not the final one.
 
-To reproduce the packed file from this directory, run `python work/pack-sunfish-60k.py`. This script uses `python_minifier` version 3.4.0 and Python's standard `lzma` library. Install or otherwise make that free, general-purpose minifier available to Python first. The script writes `outputs/sunfish-60k-main.py`. With the locally available minifier, the resulting SHA-256 is `d3a8afc8adb157528100378e0cb3691c3517b63ee34f2a4f74b1645db35705af`, matching the local candidate.
+The original build first ran `work/pack-sunfish-60k.py`, then
+`original-assemble-sunfish-utf8.py`, which has local workspace paths and
+is retained here as the actual historical assembler. The readable launcher
+and its seven-bit encoding were subsequently built into the source-bundle
+repository. The original engine adaptation predates that repository's
+freshness anchor; the later 60k change was made without this agent session
+having observed the anchor. Neither is represented as anchored fresh work.
+
+To reproduce the UTF-8 entry independently:
+
+1. Extract `chess-corresponding-source.zip` in this directory. Its README is
+   a historical snapshot from the earlier Latin-1 build; this top-level README
+   supersedes it for publication and current entry details.
+2. Make Python 3 and `python-minifier==3.4.0` available.
+3. Run `python pack_utf8.py`. It reads `work/sunfish-60k.py` and writes
+   `sunfish-utf8-main.py`.
+
+The reproduction tool was written after the original build. It verifies the
+source and compressed payload before writing the executable. The expected
+UTF-8 file is 4,079 bytes with SHA-256
+`1eff75f7b55048ad9312edf195df9ed885b4026d8655e621b223658229c3341c`.
+The compressed payload has SHA-256
+`eef1deba060a9ed20fe904a27703d07da52f5fc92f1be7c037f4b026b8376fb2`.
+Its exact bytes can depend on the minifier and LZMA implementation; the
+checks fail rather than silently produce a different entry.
 
 This package supplies the preferred source, upstream credit, build tools, and full GPL license for the packed 60k-node experiment.
